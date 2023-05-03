@@ -1,0 +1,33 @@
+{
+  "name": "dayfacts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "moment": "^2.29.4",
+    "morgan": "~1.9.1"
+  },
+  "description": "A web app that displays information about a specific day",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/M-A-Chapman/dayFacts.git"
+  },
+  "author": "Mike Chapman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M-A-Chapman/dayFacts/issues"
+  },
+  "homepage": "https://github.com/M-A-Chapman/dayFacts#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
