@@ -25,13 +25,13 @@ const getDateFacts = async (yearStr, monthStr, dayStr) => {
     if (Object.keys(dateFacts.d).length > 4) {
         topSong = dateFacts.d[3].s.replace('|MBF|', ' by ');
     } else {
-        topSong = 'no top song data available';
+        topSong = 'No Top Song Data Available';
     }
 
     if (Object.keys(dateFacts.d).length > 4) {
         topMovie = dateFacts.d[4].s;
     } else {
-        topMovie = 'no top movie data available';
+        topMovie = 'No Top Movie Data Available';
     }
 
     return [topSong, topMovie];
@@ -59,11 +59,6 @@ const getDateWeather = async (yearStr, monthStr, chosenStation) => {
     const weatherFromDate = dateWeather.split(splitStr)[1];
     if (weatherFromDate) {
         [, tmax, tmin, ad, rain, sun] = weatherFromDate.split(/\s{1,10}/g);
-        tmax = tmax.replace(/\s/g, '');
-        tmin = tmin.replace(/\s/g, '');
-        ad = ad.replace(/\s/g, '');
-        rain = rain.replace(/\s/g, '');
-        sun = sun.replace(/\s/g, '');
     } else {
         tmax = 'No Max Temperature Data Available';
         tmin = 'No Min Temperature Data Available';
