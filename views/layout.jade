@@ -3,5 +3,23 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script.
+      const submit = () => {
+      const year = getValueById('year');
+      const month = getValueById('month');
+      const day = getValueById('day');
+      const station = getValueById('station');
+      window.location.replace(`localhost:3000`);
+      if(window.location.href == 'http://localhost:3000/'){
+        window.location.href=`getFacts/?station=${station}&year=${year}&month=${month}&day=${day}`;
+      } else {
+        window.location.href = `?station=${station}&year=${year}&month=${month}&day=${day}`;
+      };
+      };
+    script.
+      const getValueById = (element) => {
+        return document.getElementById(element).value;
+      };
   body
+  
     block content

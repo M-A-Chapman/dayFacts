@@ -1,24 +1,12 @@
 extends layout
 
 block content
-  script.
-    const submit = () => {
-      const year = document.getElementById('year').value;
-      const month = document.getElementById('month').value;
-      const day = document.getElementById('day').value;
-      window.location.replace(`localhost:3000`);
-      if(window.location.href == 'http://localhost:3000/'){
-        window.location.href=`getFacts/?year=${year}&month=${month}&day=${day}`;
-      } else {
-        window.location.href = `?year=${year}&month=${month}&day=${day}`;
-      };
-    }
   h1= title
-  p Welcome to #{chosenYear || title}
-  p Choose a date to get facts
+  p Welcome to #{title}
+  p Choose a date and place to get facts
   select(id='month')
-    each month in months 
-      option( value="#{month}" selected=month == chosenMonth) #{month}
+    each month, i in months 
+      option( value="#{i + 1}" selected=i + 1 == monthStr) #{month}
   select(id='day')
     -for (var i = 1; i <32; ++i) {
     option(selected=i == chosenDay value="#{i}") #{i}
@@ -27,6 +15,8 @@ block content
     -for (var i = years-150; i <= years; ++i) {
     option(selected=i == chosenYear value="#{i}") #{i}
     -}
+  select(id='station')
+    each station, stationName in stations
+      option( value="#{station}" selected=station == chosenStation) #{stationName}
 
   button(onClick="submit()") Submit
-  p facts about #{chosenMonth || ''} #{chosenDay || ''} #{chosenYear || ''}

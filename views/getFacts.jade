@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  - var stationName = Object.keys(stations).find(key => stations[key] === chosenStation);
+  h1= title
+  p Welcome to #{title}
+  p Choose a date and place to get facts
+  form
+    label(for="month") Month
+    select(id='month')
+        each month, i in months 
+            option( value="#{i + 1}" selected=i + 1 == monthStr) #{month}
+    label(for="day") Day
+    select(id='day')
+        -for (var i = 1; i <32; ++i) {
+        option(selected=i == dayStr value="#{i}") #{i}
+        -}
+    label(for="Year") Year
+    select(id='year')
+        -for (var i = years-150; i <= years; ++i) {
+        option(selected=i == yearStr value="#{i}") #{i}
+        -}
+    label(for="station") Place
+    select(id='station')
+        each station, stationName in stations
+            option( value="#{station}" selected=station == chosenStation) #{stationName}
+  button(onClick="submit()") Submit
+  p facts about #{stationName} on #{months[monthStr-1]} #{dayStr || ''} #{yearStr || ''}
+  table 
+    thead 
+        tr 
+            td | Number 1 Song
+            td | Number 1 Movie 
+            td | Max Month Temperature (°C)
+            td | Min Month Temperature (°C)
+            td | Number of Days of Air Frost
+            td | Amount of Rain (mm)
+            td | Hours of Sun
+    tbody 
+        tr 
+            td | #{topSong}
+            td | #{topMovie}
+            td | #{tmax}
+            td | #{tmin}
+            td | #{ad}
+            td | #{rain}
+            td | #{sun}
+  p NOTE: Data indicated by an asterisk ( * ) has been estimated.
